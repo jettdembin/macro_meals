@@ -20,6 +20,10 @@ module.exports = {
 	],
 	theme: {
 		extend: {},
+		fontFamily: {
+			robot: ["Roboto"],
+			poppins: ["Poppins"],
+		},
 	},
 	plugins: [],
 };
