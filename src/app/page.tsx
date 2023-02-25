@@ -8,21 +8,20 @@ import { Button } from "@/components/Elements/Button/Button";
 export default function Home() {
 	return (
 		<main>
-			<Button>Hello worlds!</Button>
-			<div className="flex flex-col">
-				<div className="basis-32">
-					<label htmlFor="email">
-						Email:
-						<input type="text" />
-					</label>
-				</div>
-				<div className="basis-32 border border-red-500">
-					<label htmlFor="password">
-						Password:
-						<input type="password" />
-					</label>
-				</div>
+			<h1>Enter your weight and goal to get started 💪</h1>
+			<div className="">
+				<label htmlFor="weight">
+					Weight
+					<input type="text" className="" />
+				</label>
 			</div>
+			<div className="">
+				<label htmlFor="weight" className="">
+					Goal
+					<input type="text" className="" />
+				</label>
+			</div>
+			<Button>Calculate 🐱‍🏍</Button>
 		</main>
 	);
 }
