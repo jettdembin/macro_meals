@@ -1,5 +1,7 @@
-import { Button } from "@/components/Elements/Button/Button";
 import React from "react";
+
+import { Button } from "@/components/Elements/Button/Button";
+
 import "../../app/output.css";
 
 const Login = () => {
@@ -33,7 +35,9 @@ const Login = () => {
 						className="h-10 w-full rounded-md border-none outline-none pl-2"
 					/>
 				</div>
-				<Button className="mt-2 w-full border-none">Sign in</Button>
+				<Button className="mt-2 w-full border-none hover:bg-red-500 transition ease-in-out">
+					Sign in
+				</Button>
 			</div>
 		</main>
 	);
