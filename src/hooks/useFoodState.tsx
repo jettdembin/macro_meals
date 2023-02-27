@@ -1,8 +1,10 @@
-import useStorage from "./useStorage";
 import { v4 as uuidv4 } from "uuid";
+import useLocalStorage from "./useLocalStorage";
+import useStorage from "./useStorage";
+import useLocalStorageNext from "./useLocalStorageNext";
 
-const useFoodState = (initialFoods) => {
-	const [foods, setFoods] = useStorage("foods", initialFoods);
+const useFoodState = (initialFoods = []) => {
+	const [foods, setFoods] = useLocalStorageNext("foods", initialFoods);
 	return {
 		foods,
 		addFood: (newFoodItem, carb, protein, fat) => {

@@ -3,8 +3,8 @@ import { useContext, useReducer, useState } from "react";
 
 import { Button } from "@/components/Elements/Button/Button";
 
-import { ContentLayout } from "@/Layout/ContentLayout";
-import Navbar from "@/Layout/Navbar";
+import { ContentLayout } from "@/components/Layout/ContentLayout";
+import Navbar from "@/components/Layout/Navbar";
 import MacroContext from "@/context/MacroContext";
 
 import "./output.css";
@@ -60,8 +60,12 @@ export default function Home() {
 		});
 	};
 
-	const handleGoalSubmit = (e) => {
+	const handleGoalSubmit = (e, weight) => {
 		e.preventDefault();
+
+		if (weight == false) {
+			alert("Please enter weight first");
+		}
 
 		if (goal == 12) {
 			handleShred();
@@ -82,7 +86,7 @@ export default function Home() {
 			<MacroContext.Provider value="">
 				<ContentLayout title="Macro Meals">
 					<h1 className="">Enter your weight and goal to get started 💪</h1>
-					<form onSubmit={handleGoalSubmit}>
+					<form onSubmit={(e) => handleGoalSubmit(e, weight)}>
 						<div className="h-20">
 							<label htmlFor="weight">
 								Weight

@@ -124,16 +124,16 @@
   margin-right: auto;
 }
 
+.ml-2{
+  margin-left: 0.5rem;
+}
+
 .ml-auto{
   margin-left: auto;
 }
 
 .mt-2{
   margin-top: 0.5rem;
-}
-
-.ml-2{
-  margin-left: 0.5rem;
 }
 
 .flex{
@@ -226,12 +226,14 @@
   justify-content: center;
 }
 
-.gap-2{
-  gap: 0.5rem;
-}
-
 .gap-4{
   gap: 1rem;
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .rounded-lg{
@@ -305,10 +307,6 @@
 
 .pr-12{
   padding-right: 3rem;
-}
-
-.pr-14{
-  padding-right: 3.5rem;
 }
 
 .text-2xl{
