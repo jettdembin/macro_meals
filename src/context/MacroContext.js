@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
 
-const MacroContext = createContext();
+const MacroContext = createContext(null);
 
 export default MacroContext;
