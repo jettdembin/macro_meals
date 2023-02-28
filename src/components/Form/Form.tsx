@@ -34,7 +34,7 @@ export const Form = <
 			onSubmit={methods.handleSubmit(onSubmit)}
 			id={id}
 		>
-			{children(methods)}
+			{children}
 		</form>
 	);
 };

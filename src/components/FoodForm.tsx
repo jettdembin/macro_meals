@@ -28,7 +28,7 @@ const FoodForm = (props) => {
 								color: `${props.carbColor || "red"}`,
 							}}
 						>
-							{props.remaining[0]?.Carb || "0"}g
+							{/* {props.remaining[0]?.Carb || "0"}g */}
 						</h3>
 						<h4>Carb(C)</h4>
 					</div>
@@ -39,7 +39,7 @@ const FoodForm = (props) => {
 								color: `${props.proteinColor || "red"}`,
 							}}
 						>
-							{props.remaining[0]?.Protein || "0"}g
+							{/* {props.remaining[0]?.Protein || "0"}g */}
 						</h3>
 						<h4>Protein(P)</h4>
 					</div>
@@ -50,7 +50,7 @@ const FoodForm = (props) => {
 								color: `${props.fatColor || "red"}`,
 							}}
 						>
-							{props.remaining[0]?.Fat || "0"}g
+							{/* {props.remaining[0]?.Fat || "0"}g */}
 						</h3>
 						<h4>Fat(F)</h4>
 					</div>
@@ -58,7 +58,8 @@ const FoodForm = (props) => {
 			</div>
 			<Form
 				onSubmit={(e) => {
-					e.preventDefault();
+					// e.preventDefault();
+					alert("submitted");
 					// props.addFood(value, carb, protein, fat);
 					// props.handleMacro(props.remaining[0]?.Carb - Number(carb), "Carb");
 					// props.handleMacro(
@@ -102,7 +103,7 @@ const FoodForm = (props) => {
 				<div
 					style={{ marginTop: "1rem", display: "flex", justifyContent: "end" }}
 				>
-					<button class="Goal-btn" type="submit">
+					<button className="Goal-btn" type="submit">
 						Add Food
 					</button>
 				</div>
