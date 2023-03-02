@@ -7,9 +7,9 @@ const FoodProvider = ({ children }) => {
 	const { foods, addFood, removeFood, allowEdit } = useFoodState();
 
 	return (
-		<MacroContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>
+		<FoodContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>
 			{children}
-		</MacroContext.Provider>
+		</FoodContext.Provider>
 	);
 };
 

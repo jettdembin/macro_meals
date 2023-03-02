@@ -1,5 +1,7 @@
 "use client";
+
 import { useContext, useReducer, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/Elements/Button/Button";
 
@@ -23,6 +25,8 @@ export default function Home() {
 	// const [macros, dispatch] = useReducer(goalReducer, initialMacros);
 	const [weight, setWeight] = useState(0);
 	const [goal, setGoal] = useState(0);
+
+	const router = useRouter();
 
 	const calories = goal * weight;
 
@@ -78,52 +82,56 @@ export default function Home() {
 		if (goal == 18) {
 			handleBulk();
 		}
+		router.push("/foodlogger");
 	};
 
 	return (
 		<>
 			<Navbar />
-			<MacroContext.Provider value="">
-				<ContentLayout title="Macro Meals">
-					<h1 className="">Enter your weight and goal to get started 💪</h1>
-					<form onSubmit={(e) => handleGoalSubmit(e, weight)}>
-						<div className="h-20">
-							<label htmlFor="weight">
-								Weight
-								<input
-									type="text"
-									className=""
-									placeholder={+weight}
-									onChange={(e) => setWeight(e.target.value)}
-								/>
-							</label>
-						</div>
-						<div className="">
-							<label htmlFor="weight" className="">
-								Goal
-								<select
-									className="ml-2"
-									value={goal || ""}
-									onChange={(e) => handleGoalChange(e)}
-								>
-									{goalOptions?.map((o) => (
-										<option key={o.val} value={o.val}>
-											{o.text}
-										</option>
-									))}
-								</select>
-							</label>
-						</div>
-						<Button
-							type="submit"
-							className="mt-2 hover:animate-wiggle hover:bg-red-500"
-						>
-							Calculate 🐱‍🏍
-						</Button>
-					</form>
-					{`${JSON.stringify(macros)}`}
-				</ContentLayout>
-			</MacroContext.Provider>
+
+			<ContentLayout title="Macro Meals">
+				<h1 className="">Enter your weight and goal to get started 💪</h1>
+				<form
+					onSubmit={(e) => {
+						handleGoalSubmit(e, weight);
+					}}
+				>
+					<div className="h-20">
+						<label htmlFor="weight">
+							Weight
+							<input
+								type="text"
+								className=""
+								placeholder={+weight}
+								onChange={(e) => setWeight(e.target.value)}
+							/>
+						</label>
+					</div>
+					<div className="">
+						<label htmlFor="weight" className="">
+							Goal
+							<select
+								className="ml-2"
+								value={goal || ""}
+								onChange={(e) => handleGoalChange(e)}
+							>
+								{goalOptions?.map((o) => (
+									<option key={o.val} value={o.val}>
+										{o.text}
+									</option>
+								))}
+							</select>
+						</label>
+					</div>
+					<Button
+						type="submit"
+						className="mt-2 hover:animate-wiggle hover:bg-red-500"
+					>
+						Calculate 🐱‍🏍
+					</Button>
+				</form>
+				{`${JSON.stringify(macros)}`}
+			</ContentLayout>
 		</>
 	);
 }
