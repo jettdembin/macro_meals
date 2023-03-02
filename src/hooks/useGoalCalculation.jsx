@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const useGoalCalculation = () => {
+export const useGoalCalculation = () => {
 	const initialMacros = {
 		carbs: 0, // grams
 		protein: 0, // grams
@@ -47,11 +47,13 @@ const useGoalCalculation = () => {
 		});
 	};
 	return {
+		goalOptions,
+		weight,
+		setWeight,
+		calories,
 		handleShred,
 		handleMaintain,
 		handleBulk,
 		handleGoalChange,
 	};
 };
-
-export default useGoalCalculation;

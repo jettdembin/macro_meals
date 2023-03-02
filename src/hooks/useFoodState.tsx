@@ -4,7 +4,22 @@ import useStorage from "./useStorage";
 import useLocalStorageNext from "./useLocalStorageNext";
 
 const useFoodState = (initialFoods = []) => {
-	const [foods, setFoods] = useLocalStorageNext("foods", initialFoods);
+	const [foods, setFoods] = useLocalStorageNext("foods", [
+		{
+			id: uuidv4(),
+			item: "chicken",
+			carb: 0,
+			protein: 25,
+			fat: 2.5,
+		},
+		{
+			id: uuidv4(),
+			item: "chicken",
+			carb: 0,
+			protein: 25,
+			fat: 2.5,
+		},
+	]);
 	return {
 		foods,
 		addFood: (newFoodItem, carb, protein, fat) => {

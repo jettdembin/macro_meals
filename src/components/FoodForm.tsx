@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { Form } from "@/components/Form/Form";
 import useFormState from "@/hooks/useFormState";
 import useFormDigitState from "@/hooks/useFormDigitState";
-import FoodContext from "@/context/FoodContext";
+import { FoodContext } from "@/context/FoodProvider";
 
 const FoodForm = (props) => {
 	const [value, handleFoodChange, reset] = useFormState("");

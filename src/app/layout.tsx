@@ -1,16 +1,13 @@
-
 import "./output.css";
 
-const FoodContext = createContext();
-const MacroContext = createContext();
+import FoodProvider from "../context/FoodProvider";
+import MacroProvider from "../context/MacroProvider";
 
 export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const { foods, addFood, removeFood, allowEdit } = useFoodState();
-
 	return (
 		<html lang="en">
 			{/*
@@ -18,8 +15,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
 			<head />
-			<body>		<FoodContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>
-				<MacroContext.Provider value="">{children}</MacroContext.Provider></FoodContext.Provider></></body>
+			<body>
+				<FoodProvider>
+					<MacroProvider>{children}</MacroProvider>
+				</FoodProvider>
+			</body>
 		</html>
 	);
 }
