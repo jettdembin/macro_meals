@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useDebugValue, useEffect, useState } from "react";
 
 const useLocalStorageNext = <S,>(

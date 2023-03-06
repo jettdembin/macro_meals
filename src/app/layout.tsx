@@ -16,9 +16,7 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<FoodProvider>
-					<MacroProvider>{children}</MacroProvider>
-				</FoodProvider>
+				<FoodProvider>{children}</FoodProvider>
 			</body>
 		</html>
 	);

@@ -1,18 +1,19 @@
 "use client";
 
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import useFoodState from "@/hooks/useFoodState";
 
-export const FoodContext = createContext(null);
+const FoodContext = createContext(null);
 
 const FoodProvider = ({ children }) => {
-	const { foods, addFood, removeFood, allowEdit } = useFoodState([]);
+	const [foods, setFoods] = useFoodState();
+	debugger;
 
-	return (
-		<FoodContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>
-			{children}
-		</FoodContext.Provider>
-	);
+	return <FoodContext.Provider value={foods}>{children}</FoodContext.Provider>;
+};
+
+export const useFoodContext = () => {
+	return useContext(FoodContext);
 };
 
 export default FoodProvider;

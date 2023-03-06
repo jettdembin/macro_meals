@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { Form } from "@/components/Form/Form";
 import useFormState from "@/hooks/useFormState";
 import useFormDigitState from "@/hooks/useFormDigitState";
-import { FoodContext } from "@/context/FoodProvider";
+import { useFoodContext } from "@/context/FoodProvider";
 
 const FoodForm = (props) => {
 	const [value, handleFoodChange, reset] = useFormState("");
@@ -13,7 +13,7 @@ const FoodForm = (props) => {
 	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
 	const [fat, handleFatChange, resetFat] = useFormDigitState("");
 
-	const { foods, addFood, removeFood, allowEdit } = useContext(FoodContext);
+	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
 
 	return (
 		<div>
