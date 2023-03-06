@@ -6,13 +6,14 @@ import useFoodState from "@/hooks/useFoodState";
 const FoodContext = createContext(null);
 
 const FoodProvider = ({ children }) => {
-	const [foods, setFoods] = useState(["fuck you"]);
+	const { foods, addFood, removeFood, allowEdit } = useFoodState();
 	console.log(foods);
-	// const foods = ["fuck you"];
-	debugger;
+	// debugger;
 
 	return (
-		<FoodContext.Provider value={{ foods }}>{children}</FoodContext.Provider>
+		<FoodContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>
+			{children}
+		</FoodContext.Provider>
 	);
 };
 
