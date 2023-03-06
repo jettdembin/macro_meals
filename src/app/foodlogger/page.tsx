@@ -14,13 +14,13 @@ import "../../app/output.css";
 import { useFoodContext } from "@/context/FoodProvider";
 
 const FoodLogger = () => {
-	const [foods, setFoods] = useFoodContext();
+	const { foods } = useFoodContext();
 
 	return (
 		<ContentLayout title="Food logger 😋">
 			Log food
 			{/* <FoodForm /> */}
-			{foods.length > 0 && <FoodList foods={foods} />}
+			{/* {foods.length > 0 && <FoodList foods={foods} />} */}
 		</ContentLayout>
 	);
 };
