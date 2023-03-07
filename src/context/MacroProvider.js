@@ -1,9 +1,9 @@
 "use client";
 
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useGoalCalculation } from "@/hooks/useGoalCalculation";
 
-export const MacroContext = createContext(null);
+const MacroContext = createContext(null);
 
 const MacroProvider = ({ children }) => {
 	const {
@@ -33,6 +33,10 @@ const MacroProvider = ({ children }) => {
 			{children}
 		</MacroContext.Provider>
 	);
+};
+
+export const useMacroContext = () => {
+	return useContext(MacroContext);
 };
 
 export default MacroProvider;

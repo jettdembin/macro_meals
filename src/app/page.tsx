@@ -2,12 +2,12 @@
 
 import { useContext, useReducer, useState } from "react";
 import { useRouter } from "next/navigation";
+import Navbar from "@/components/Layout/Navbar";
 
 import { Button } from "@/components/Elements/Button/Button";
 
 import { ContentLayout } from "@/components/Layout/ContentLayout";
-import Navbar from "@/components/Layout/Navbar";
-import { MacroContext } from "@/context/MacroProvider";
+import { useMacroContext } from "@/context/MacroProvider";
 
 import "./output.css";
 
@@ -15,7 +15,8 @@ import "./output.css";
 
 export default function Home() {
 	const { weight, setWeight, goal, goalOptions, macros, handleGoalChange } =
-		useContext(MacroContext);
+		useMacroContext();
+
 	const router = useRouter();
 
 	const handleGoalSubmit = (e, weight) => {
@@ -24,15 +25,12 @@ export default function Home() {
 		if (weight == false) {
 			alert("Please enter weight first");
 		}
-
 		if (goal == 12) {
 			handleShred();
 		}
-
 		if (goal == 15) {
 			handleMaintain();
 		}
-
 		if (goal == 18) {
 			handleBulk();
 		}

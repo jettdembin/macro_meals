@@ -6,6 +6,7 @@ import { Form } from "@/components/Form/Form";
 import useFormState from "@/hooks/useFormState";
 import useFormDigitState from "@/hooks/useFormDigitState";
 import { useFoodContext } from "@/context/FoodProvider";
+import { useMacroContext } from "@/context/MacroProvider";
 
 const FoodForm = (props) => {
 	const [value, handleFoodChange, reset] = useFormState("");
@@ -14,9 +15,11 @@ const FoodForm = (props) => {
 	const [fat, handleFatChange, resetFat] = useFormDigitState("");
 
 	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
+	const { handleShred, handleMaintain, handleBulk, weight } = useMacroContext();
 
 	return (
 		<div>
+			{weight}
 			<h2 style={{ textAlign: "center" }}>Remaining Macros for the Day</h2>
 			<div style={{ display: "flex" }}>
 				<div

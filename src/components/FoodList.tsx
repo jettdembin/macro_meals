@@ -4,6 +4,7 @@ import { useFoodContext } from "@/context/FoodProvider";
 const FoodList = () => {
 	const { foods } = useFoodContext();
 	// debugger;
+
 	// let totalAmountMacrosforFoods = 0;
 	// let totalMacrosStored =
 	//   props.storedTotals[0].Carb +
