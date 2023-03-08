@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useFoodContext } from "@/context/FoodProvider";
+import Food from "./FoodList/Food";
 
 const FoodList = () => {
 	const { foods } = useFoodContext();
@@ -7,9 +8,9 @@ const FoodList = () => {
 
 	// let totalAmountMacrosforFoods = 0;
 	// let totalMacrosStored =
-	//   props.storedTotals[0].Carb +
-	//   props.storedTotals[0].Protein +
-	//   props.storedTotals[0].Fat;
+	//   storedTotals[0].Carb +
+	//   storedTotals[0].Protein +
+	//   storedTotals[0].Fat;
 	// for (let food of foods) {
 	//   let carb = Number(food.carb);
 	//   let protein = Number(food.protein);
@@ -41,11 +42,11 @@ const FoodList = () => {
 			</div>
 			<ul>
 				{foods.map((food, i) => (
-					<>
+					<Fragment key={i}>
 						{food.item}
-						{/* <Food food={food} id={food.id} key={food.id} {...props} /> */}
+						<Food food={food} id={food.id} />
 						{i < foods.length - 1 && <hr />}
-					</>
+					</Fragment>
 				))}
 			</ul>
 		</div>
