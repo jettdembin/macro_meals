@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Layout/Navbar";
 
@@ -19,11 +19,14 @@ export default function Home() {
 
 	const router = useRouter();
 
-	const handleGoalSubmit = (e, weight) => {
+	const handleGoalSubmit = (e) => {
 		e.preventDefault();
+		console.log(weight, "weight");
+		console.log(goal, "goal");
 
 		if (weight == false) {
 			alert("Please enter weight first");
+			return;
 		}
 		if (goal == 12) {
 			handleShred();
@@ -44,16 +47,17 @@ export default function Home() {
 				<h1 className="">Enter your weight and goal to get started 💪</h1>
 				<form
 					onSubmit={(e) => {
-						handleGoalSubmit(e, weight);
+						console.log(e);
+						handleGoalSubmit(e, weight, goal);
 					}}
 				>
 					<div className="h-20">
 						<label htmlFor="weight">
 							Weight
 							<input
-								type="text"
-								className=""
-								placeholder={+weight}
+								type="number"
+								className="ml-2"
+								placeholder={weight}
 								onChange={(e) => setWeight(e.target.value)}
 							/>
 						</label>
@@ -63,7 +67,7 @@ export default function Home() {
 							Goal
 							<select
 								className="ml-2"
-								value={goal || ""}
+								value={goal}
 								onChange={(e) => handleGoalChange(e)}
 							>
 								{goalOptions.map((o) => (
@@ -81,7 +85,7 @@ export default function Home() {
 						Calculate 🐱‍🏍
 					</Button>
 				</form>
-				{`${JSON.stringify(macros)}`}
+				{/* {`${JSON.stringify(macros)}`} */}
 			</ContentLayout>
 		</>
 	);

@@ -23,6 +23,7 @@ export const useGoalCalculation = () => {
 
 	const handleGoalChange = (e) => {
 		setGoal(e.target.value);
+		console.log(e.target.value, "goal");
 	};
 
 	const handleShred = () => {

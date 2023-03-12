@@ -8,7 +8,7 @@ import useFormDigitState from "@/hooks/useFormDigitState";
 import { useFoodContext } from "@/context/FoodProvider";
 import { useMacroContext } from "@/context/MacroProvider";
 
-const FoodForm = (props) => {
+const FoodForm = () => {
 	const [value, handleFoodChange, reset] = useFormState("");
 	const [carb, handleProteinChange, resetProtein] = useFormDigitState("");
 	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
@@ -20,42 +20,33 @@ const FoodForm = (props) => {
 	return (
 		<div>
 			{weight}
-			<h2 style={{ textAlign: "center" }}>Remaining Macros for the Day</h2>
-			<div style={{ display: "flex" }}>
-				<div
-					style={{
-						display: "flex",
-						width: "100%",
-						justifyContent: "space-between",
-					}}
-				>
-					<div style={{ margin: "auto" }}>
+			<h2 className="text-center">Remaining Macros for the Day</h2>
+			<div className="flex">
+				<div className="flex w-full justify-center">
+					<div className="mx-auto my-auto">
 						<h3
 							style={{
 								textAlign: "center",
-								color: `${props.carbColor || "red"}`,
 							}}
 						>
 							{/* {props.remaining[0]?.Carb || "0"}g */}
 						</h3>
 						<h4>Carb(C)</h4>
 					</div>
-					<div style={{ margin: "auto" }}>
+					<div className="mx-auto my-auto">
 						<h3
 							style={{
 								textAlign: "center",
-								color: `${props.proteinColor || "red"}`,
 							}}
 						>
 							{/* {props.remaining[0]?.Protein || "0"}g */}
 						</h3>
 						<h4>Protein(P)</h4>
 					</div>
-					<div style={{ margin: "auto" }}>
+					<div className="mx-auto my-auto">
 						<h3
 							style={{
 								textAlign: "center",
-								color: `${props.fatColor || "red"}`,
 							}}
 						>
 							{/* {props.remaining[0]?.Fat || "0"}g */}
@@ -64,7 +55,8 @@ const FoodForm = (props) => {
 					</div>
 				</div>
 			</div>
-			<Form
+			<form
+				className=""
 				onSubmit={(e) => {
 					// e.preventDefault();
 					alert("submitted");
@@ -83,13 +75,12 @@ const FoodForm = (props) => {
 				}}
 			>
 				<input
+					className="mx-auto text-center block"
 					value={value}
 					onChange={handleFoodChange}
-					margin="normal"
 					label="Food"
-					fullWidth
 				/>
-				<div style={{ display: "flex", justifyContent: "space-between" }}>
+				<div className="flex justify-center">
 					<div>
 						<input
 							value={carb}
@@ -115,7 +106,7 @@ const FoodForm = (props) => {
 						Add Food
 					</button>
 				</div>
-			</Form>
+			</form>
 		</div>
 	);
 };

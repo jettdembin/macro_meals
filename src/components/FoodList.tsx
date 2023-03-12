@@ -4,6 +4,7 @@ import Food from "./FoodList/Food";
 
 const FoodList = () => {
 	const { foods } = useFoodContext();
+
 	// debugger;
 
 	// let totalAmountMacrosforFoods = 0;
@@ -23,29 +24,21 @@ const FoodList = () => {
 	// }
 
 	return (
-		<div
-			style={{
-				display: "flex",
-			}}
-		>
-			<div
-				style={{
-					display: "flex",
-					margin: "auto",
-				}}
-			>
-				<div style={{ display: "flex", marginLeft: "1rem" }}>
+		<div className="flex">
+			<div className="flex mx-auto my-auto">
+				<div className="flex ml-1">
 					<h4>(C)</h4>
-					<h4 style={{ margin: "1.35rem 1.8rem" }}>(P)</h4>
+					<h4 className="mx-1 my-2">(P)</h4>
 					<h4>(F)</h4>
 				</div>
 			</div>
 			<ul>
 				{foods.map((food, i) => (
 					<Fragment key={i}>
-						{food.item}
-						<Food food={food} id={food.id} />
-						{i < foods.length - 1 && <hr />}
+						<li className="flex list-none">
+							<Food food={food} id={food.id} />
+							{i < foods.length - 1 && <hr />}
+						</li>
 					</Fragment>
 				))}
 			</ul>

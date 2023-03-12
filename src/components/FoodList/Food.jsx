@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 // import EditFoodForm from "./EditFoodForm";
 
 const Food = ({ food }) => {
@@ -11,7 +11,7 @@ const Food = ({ food }) => {
 	// let remainingFat = remaining[0].Fat;
 
 	return (
-		<li style={{ height: "64px" }}>
+		<Fragment>
 			{isEditing ? (
 				<>
 					{/* <EditFoodForm
@@ -24,38 +24,19 @@ const Food = ({ food }) => {
 				</>
 			) : (
 				<>
-					<text>
-						<div style={{ display: "flex" }}>
-							<div
-								style={{
-									width: "20px",
-								}}
-							>
-								{food.item}
+					<p>{food.item}</p>
+					<div className="flex border border-solid border-purple-400">
+						<div className="grid items-center w-40 comx-auto grid-cols-3">
+							<div className="text-center">{food.carb ? food.carb : "0"}</div>
+							<div className="text-center">
+								{food.protein ? food.protein : "0"}
 							</div>
-							<div
-								style={{
-									display: "grid",
-									width: "150px",
-									margin: "auto",
-									gridTemplateColumns: "1fr 1fr 1fr",
-								}}
-							>
-								<div style={{ textAlign: "center" }}>
-									{food.carb ? food.carb : "0"}
-								</div>
-								<div style={{ textAlign: "center" }}>
-									{food.protein ? food.protein : "0"}
-								</div>
-								<div style={{ textAlign: "center" }}>
-									{food.fat ? food.fat : "0"}
-								</div>
-							</div>
+							<div className="text-center">{food.fat ? food.fat : "0"}</div>
 						</div>
-					</text>
-					<li style={{ width: "80px" }}>
+					</div>
+					<div className="w-20">
 						<button
-							style={{ width: "40px", textAlign: "center" }}
+							className="w-10 text-center"
 							onClick={() => {
 								if (remainingCarb + Number(food.carb) > storedTotals[0].Carb) {
 									handleMacro(storedTotals[0].Carb, "Carb");
@@ -82,16 +63,20 @@ const Food = ({ food }) => {
 								toggleColor(food.carb, food.protein, food.fat, 3);
 							}}
 							aria-label="Delete"
-						></button>
+						>
+							<span class="material-icons">delete_forever</span>
+						</button>
 						<button
-							style={{ width: "40px", textAlign: "center" }}
+							className="w-10 text-center"
 							onClick={toggleEdit}
 							aria-label="Edit"
-						></button>
-					</li>
+						>
+							<span class="material-icons">edit</span>
+						</button>
+					</div>
 				</>
 			)}
-		</li>
+		</Fragment>
 	);
 };
 export default Food;

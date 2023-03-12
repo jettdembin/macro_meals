@@ -7,6 +7,7 @@ const MacroContext = createContext(null);
 
 const MacroProvider = ({ children }) => {
 	const {
+		goal,
 		weight,
 		setWeight,
 		goalOptions,
