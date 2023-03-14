@@ -14,31 +14,15 @@ import "./output.css";
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-	const { weight, setWeight, goal, goalOptions, macros, handleGoalChange } =
-		useMacroContext();
-
-	const router = useRouter();
-
-	const handleGoalSubmit = (e) => {
-		e.preventDefault();
-		console.log(weight, "weight");
-		console.log(goal, "goal");
-
-		if (weight == false) {
-			alert("Please enter weight first");
-			return;
-		}
-		if (goal == 12) {
-			handleShred();
-		}
-		if (goal == 15) {
-			handleMaintain();
-		}
-		if (goal == 18) {
-			handleBulk();
-		}
-		router.push("/foodlogger");
-	};
+	const {
+		weight,
+		setWeight,
+		goal,
+		goalOptions,
+		macros,
+		handleGoalChange,
+		handleGoalSubmit,
+	} = useMacroContext();
 
 	return (
 		<>
@@ -48,7 +32,7 @@ export default function Home() {
 				<form
 					onSubmit={(e) => {
 						console.log(e);
-						handleGoalSubmit(e, weight, goal);
+						handleGoalSubmit(e);
 					}}
 				>
 					<div className="h-20">
@@ -68,7 +52,9 @@ export default function Home() {
 							<select
 								className="ml-2"
 								value={goal}
-								onChange={(e) => handleGoalChange(e)}
+								onChange={(e) => {
+									handleGoalChange(e.currentTarget.value);
+								}}
 							>
 								{goalOptions.map((o) => (
 									<option key={o.val} value={o.val}>

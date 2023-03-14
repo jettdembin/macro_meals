@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const useGoalCalculation = () => {
 	const initialMacros = {
@@ -21,9 +22,11 @@ export const useGoalCalculation = () => {
 
 	const calories = goal * weight;
 
-	const handleGoalChange = (e) => {
-		setGoal(e.target.value);
-		console.log(e.target.value, "goal");
+	const router = useRouter();
+
+	const handleGoalChange = (weightMultiplier) => {
+		const numberMultiplier = Number(weightMultiplier);
+		setGoal(numberMultiplier);
 	};
 
 	const handleShred = () => {
@@ -49,7 +52,28 @@ export const useGoalCalculation = () => {
 			fat: Math.round((remainingCalsMinusProtein * 0.4) / 9),
 		});
 	};
+
+	const handleGoalSubmit = (e) => {
+		e.preventDefault();
+
+		if (weight == false) {
+			alert("Please enter weight first");
+			return;
+		}
+		if (goal == 12) {
+			handleShred();
+		}
+		if (goal == 15) {
+			handleMaintain();
+		}
+		if (goal == 18) {
+			handleBulk();
+		}
+		router.push("/foodlogger");
+	};
+
 	return {
+		macros,
 		goalOptions,
 		weight,
 		setWeight,
@@ -58,5 +82,6 @@ export const useGoalCalculation = () => {
 		handleMaintain,
 		handleBulk,
 		handleGoalChange,
+		handleGoalSubmit,
 	};
 };

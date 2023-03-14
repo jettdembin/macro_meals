@@ -15,7 +15,16 @@ const FoodForm = () => {
 	const [fat, handleFatChange, resetFat] = useFormDigitState("");
 
 	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
-	const { handleShred, handleMaintain, handleBulk, weight } = useMacroContext();
+	const { handleShred, handleMaintain, handleBulk, weight, macros } =
+		useMacroContext();
+
+	const totalCarbs = macros?.carbs;
+	const totalProtein = macros?.protein;
+	const totalFat = macros?.fat;
+
+	console.log(totalCarbs, "totalCarbs");
+	console.log(totalProtein, "totalProtein");
+	console.log(totalFat, "totalFat");
 
 	return (
 		<div>
@@ -24,34 +33,16 @@ const FoodForm = () => {
 			<div className="flex">
 				<div className="flex w-full justify-center">
 					<div className="mx-auto my-auto">
-						<h3
-							style={{
-								textAlign: "center",
-							}}
-						>
-							{/* {props.remaining[0]?.Carb || "0"}g */}
-						</h3>
 						<h4>Carb(C)</h4>
+						<h3 className="text-center">{totalCarbs}</h3>
 					</div>
 					<div className="mx-auto my-auto">
-						<h3
-							style={{
-								textAlign: "center",
-							}}
-						>
-							{/* {props.remaining[0]?.Protein || "0"}g */}
-						</h3>
 						<h4>Protein(P)</h4>
+						<h3 className="text-center">{totalProtein}</h3>
 					</div>
 					<div className="mx-auto my-auto">
-						<h3
-							style={{
-								textAlign: "center",
-							}}
-						>
-							{/* {props.remaining[0]?.Fat || "0"}g */}
-						</h3>
 						<h4>Fat(F)</h4>
+						<h3 className="text-center">{totalFat}</h3>
 					</div>
 				</div>
 			</div>

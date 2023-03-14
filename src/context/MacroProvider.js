@@ -7,6 +7,7 @@ const MacroContext = createContext(null);
 
 const MacroProvider = ({ children }) => {
 	const {
+		macros,
 		goal,
 		weight,
 		setWeight,
@@ -16,11 +17,14 @@ const MacroProvider = ({ children }) => {
 		handleMaintain,
 		handleBulk,
 		handleGoalChange,
+		handleGoalSubmit,
 	} = useGoalCalculation();
 
 	return (
 		<MacroContext.Provider
 			value={{
+				macros,
+				goal,
 				weight,
 				setWeight,
 				goalOptions,
@@ -29,6 +33,7 @@ const MacroProvider = ({ children }) => {
 				handleMaintain,
 				handleBulk,
 				handleGoalChange,
+				handleGoalSubmit,
 			}}
 		>
 			{children}
