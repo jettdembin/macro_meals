@@ -66,28 +66,35 @@ const FoodForm = () => {
 				}}
 			>
 				<input
-					className="mx-auto text-center block"
+					className="mx-auto text-center block border-red-400"
 					value={value}
 					onChange={handleFoodChange}
 					label="Food"
 				/>
-				<div className="flex justify-center">
+				<div className="flex justify-between">
 					<div>
 						<input
+							className="border border-solid border-green-400"
+							label="Carbs(grams)"
 							value={carb}
 							onChange={handleProteinChange}
-							label="Carbs(grams)"
 						/>
 					</div>
 					<div>
 						<input
-							value={protein}
-							onChange={handleCarbChange}
+							className="border border-solid border-purple-400"
 							label="Protein(grams)"
+							onChange={handleCarbChange}
+							value={protein}
 						/>
 					</div>
 					<div>
-						<input value={fat} onChange={handleFatChange} label="Fat(grams)" />
+						<input
+							className="border border-solid border-purple-400"
+							label="Fat(grams)"
+							onChange={handleFatChange}
+							value={fat}
+						/>
 					</div>
 				</div>
 				<div

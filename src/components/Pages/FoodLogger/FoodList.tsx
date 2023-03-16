@@ -24,21 +24,21 @@ const FoodList = () => {
 	// }
 
 	return (
-		<div className="flex">
+		<div className="flex flex-col">
 			<div className="flex mx-auto my-auto">
 				<div className="flex ml-1">
-					<h4>(C)</h4>
+					<h4 className="mx-1 my-2">(C)</h4>
 					<h4 className="mx-1 my-2">(P)</h4>
-					<h4>(F)</h4>
+					<h4 className="mx-1 my-2">(F)</h4>
 				</div>
 			</div>
-			<ul>
+			<ul className="pl-0">
 				{foods.map((food, i) => (
 					<Fragment key={i}>
-						<li className="flex list-none">
+						<li className="flex justify-between border border-solid border-red-500 list-none">
 							<Food food={food} id={food.id} />
-							{i < foods.length - 1 && <hr />}
 						</li>
+						{i < foods.length - 1 && <hr />}
 					</Fragment>
 				))}
 			</ul>

@@ -34,9 +34,9 @@ const Food = ({ food }) => {
 							<div className="text-center">{food.fat ? food.fat : "0"}</div>
 						</div>
 					</div>
-					<div className="w-20">
+					<div className="w-20 flex">
 						<button
-							className="w-10 text-center"
+							className="w-12 text-center pointer"
 							onClick={() => {
 								if (remainingCarb + Number(food.carb) > storedTotals[0].Carb) {
 									handleMacro(storedTotals[0].Carb, "Carb");
@@ -66,6 +66,7 @@ const Food = ({ food }) => {
 						>
 							<span class="material-icons">delete_forever</span>
 						</button>
+
 						<button
 							className="w-10 text-center"
 							onClick={toggleEdit}
