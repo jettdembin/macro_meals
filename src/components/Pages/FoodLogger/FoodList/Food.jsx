@@ -24,17 +24,19 @@ const Food = ({ food }) => {
 				</>
 			) : (
 				<>
-					<p>{food.item}</p>
-					<div className="flex border border-solid border-purple-400">
-						<div className="grid items-center w-40 comx-auto grid-cols-3">
-							<div className="text-center">{food.carb ? food.carb : "0"}</div>
-							<div className="text-center">
-								{food.protein ? food.protein : "0"}
-							</div>
-							<div className="text-center">{food.fat ? food.fat : "0"}</div>
-						</div>
+					<div>
+						<p>{food.item}</p>
 					</div>
-					<div className="w-20 flex">
+
+					<div className="grid grid-cols-3 items-center w-full ">
+						<div className="text-center">{food.carb ? food.carb : "0"}</div>
+						<div className="text-center">
+							{food.protein ? food.protein : "0"}
+						</div>
+						<div className="text-center">{food.fat ? food.fat : "0"}</div>
+					</div>
+
+					<div className="w-full flex justify-end">
 						<button
 							className="w-12 text-center pointer"
 							onClick={() => {

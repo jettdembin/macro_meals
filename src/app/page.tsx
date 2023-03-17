@@ -31,7 +31,6 @@ export default function Home() {
 				<h1 className="">Enter your weight and goal to get started 💪</h1>
 				<form
 					onSubmit={(e) => {
-						console.log(e);
 						handleGoalSubmit(e);
 					}}
 				>

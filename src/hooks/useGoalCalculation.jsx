@@ -11,6 +11,7 @@ export const useGoalCalculation = () => {
 	};
 
 	const goalOptions = [
+		{ val: 0, text: "Select" },
 		{ val: 12, text: "Shred Fat" },
 		{ val: 15, text: "Maintain" },
 		{ val: 18, text: "Bulk" },
@@ -58,6 +59,10 @@ export const useGoalCalculation = () => {
 
 		if (weight == false) {
 			alert("Please enter weight first");
+			return;
+		}
+		if (goal == 0) {
+			alert("please select goal");
 			return;
 		}
 		if (goal == 12) {

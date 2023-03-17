@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { Form } from "@/components/Form/Form";
 import useFormState from "@/hooks/useFormState";
@@ -9,7 +9,7 @@ import { useFoodContext } from "@/context/FoodProvider";
 import { useMacroContext } from "@/context/MacroProvider";
 
 const FoodForm = () => {
-	const [value, handleFoodChange, reset] = useFormState("");
+	const [food, handleFoodChange, reset] = useFormState("");
 	const [carb, handleProteinChange, resetProtein] = useFormDigitState("");
 	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
 	const [fat, handleFatChange, resetFat] = useFormDigitState("");
@@ -17,14 +17,25 @@ const FoodForm = () => {
 	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
 	const { handleShred, handleMaintain, handleBulk, weight, macros } =
 		useMacroContext();
+	const totalCarbs = macros?.carbs || 0;
+	const totalProtein = macros?.protein || 0;
+	const totalFat = macros?.fat || 0;
 
-	const totalCarbs = macros?.carbs;
-	const totalProtein = macros?.protein;
-	const totalFat = macros?.fat;
+	const [remainingMacros, setRemainingMacros] = useState({
+		carb: totalCarbs,
+		protein: totalProtein,
+		fat: totalFat,
+	});
 
 	console.log(totalCarbs, "totalCarbs");
 	console.log(totalProtein, "totalProtein");
 	console.log(totalFat, "totalFat");
+
+	// const handleMacros = (carb, protein, fat) => {
+	// 	setRemainingMacros({
+	// 		carbs:
+	// 	})
+	// };
 
 	return (
 		<div>
@@ -49,8 +60,10 @@ const FoodForm = () => {
 			<form
 				className=""
 				onSubmit={(e) => {
-					// e.preventDefault();
+					e.preventDefault();
 					alert("submitted");
+					addFood(food, carb, protein, fat);
+
 					// props.addFood(value, carb, protein, fat);
 					// props.handleMacro(props.remaining[0]?.Carb - Number(carb), "Carb");
 					// props.handleMacro(
@@ -67,7 +80,7 @@ const FoodForm = () => {
 			>
 				<input
 					className="mx-auto text-center block border-red-400"
-					value={value}
+					value={food}
 					onChange={handleFoodChange}
 					label="Food"
 				/>
@@ -97,9 +110,7 @@ const FoodForm = () => {
 						/>
 					</div>
 				</div>
-				<div
-					style={{ marginTop: "1rem", display: "flex", justifyContent: "end" }}
-				>
+				<div className="flex items-center justify-end">
 					<button className="Goal-btn" type="submit">
 						Add Food
 					</button>

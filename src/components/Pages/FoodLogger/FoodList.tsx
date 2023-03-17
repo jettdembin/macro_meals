@@ -35,7 +35,7 @@ const FoodList = () => {
 			<ul className="pl-0">
 				{foods.map((food, i) => (
 					<Fragment key={i}>
-						<li className="flex justify-between border border-solid border-red-500 list-none">
+						<li className="grid grid-cols-3 border border-solid border-red-500 list-none">
 							<Food food={food} id={food.id} />
 						</li>
 						{i < foods.length - 1 && <hr />}
