@@ -1,8 +1,9 @@
 "use client";
 
+import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@/components/Elements/Button/Button";
 
-export default function Login() {
+export default function Login({ session: {} }) {
 	return (
 		<div className="m-auto max-w-xl">
 			<h1>Welcome Back :)</h1>
@@ -11,7 +12,7 @@ export default function Login() {
 				your email and address 🔔
 			</p>
 
-			<div className="flex items-center  border border-solid border-solid-gray-500 rounded-lg">
+			{/* <div className="flex items-center  border border-solid border-solid-gray-500 rounded-lg">
 				<span className="material-icons flex items-center justify-center cursor-pointer w-10 h-10">
 					search
 				</span>
@@ -31,7 +32,7 @@ export default function Login() {
 					placeholder="Password"
 					className="h-10 w-full rounded-md border-none outline-none pl-2"
 				/>
-			</div>
+			</div> */}
 			<Button className="mt-2 w-full border-none hover:bg-red-500 transition ease-in-out">
 				Sign in
 			</Button>
