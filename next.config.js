@@ -15,6 +15,9 @@ const nextConfig = {
 		extend: {},
 	},
 	plugins: [],
+	images: {
+		domains: ["lh3.googleusercontent.com"],
+	},
 };
 
 module.exports = nextConfig;

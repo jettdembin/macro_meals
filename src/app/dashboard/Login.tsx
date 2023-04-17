@@ -3,7 +3,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@/components/Elements/Button/Button";
 
-export default function Login({ session: {} }) {
+export default function Login() {
 	return (
 		<div className="m-auto max-w-xl">
 			<h1>Welcome Back :)</h1>
@@ -33,7 +33,10 @@ export default function Login({ session: {} }) {
 					className="h-10 w-full rounded-md border-none outline-none pl-2"
 				/>
 			</div> */}
-			<Button className="mt-2 w-full border-none hover:bg-red-500 transition ease-in-out">
+			<Button
+				className="mt-2 w-full border-none hover:bg-red-500 transition ease-in-out"
+				onClick={() => signIn()}
+			>
 				Sign in
 			</Button>
 		</div>
