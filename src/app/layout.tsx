@@ -2,7 +2,7 @@ import "./output.css";
 
 import FoodProvider from "../context/FoodProvider";
 import MacroProvider from "../context/MacroProvider";
-import Nav from "./auth/Nav";
+import Nav from "../components/Layout/Nav";
 
 export default function RootLayout({
 	children,
