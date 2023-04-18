@@ -1,9 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import useMacroTracker from "./useMacroTracker";
 
 export const useGoalCalculation = () => {
+	const {
+		foods,
+		setFoods,
+		macros,
+		setMacros,
+		remainingMacros,
+		setRemainingMacros,
+		addFood,
+		editFood,
+		removeFood,
+	} = useMacroTracker();
+
 	const initialMacros = {
 		carbs: 0, // grams
 		protein: 0, // grams
@@ -17,7 +30,7 @@ export const useGoalCalculation = () => {
 		{ val: 18, text: "Bulk" },
 	];
 
-	const [macros, setMacros] = useState(initialMacros);
+	// const [macros, setMacros] = useState(initialMacros);
 	const [weight, setWeight] = useState(0);
 	const [goal, setGoal] = useState(0);
 
@@ -78,7 +91,15 @@ export const useGoalCalculation = () => {
 	};
 
 	return {
+		foods,
+		setFoods,
 		macros,
+		setMacros,
+		remainingMacros,
+		setRemainingMacros,
+		addFood,
+		editFood,
+		removeFood,
 		goalOptions,
 		weight,
 		setWeight,

@@ -14,9 +14,17 @@ const FoodForm = () => {
 	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
 	const [fat, handleFatChange, resetFat] = useFormDigitState("");
 
-	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
-	const { handleShred, handleMaintain, handleBulk, weight, macros } =
-		useMacroContext();
+	const {
+		foods,
+		addFood,
+		removeFood,
+		allowEdit,
+		handleShred,
+		handleMaintain,
+		handleBulk,
+		weight,
+		macros,
+	} = useMacroContext();
 	const totalCarbs = macros?.carbs || 0;
 	const totalProtein = macros?.protein || 0;
 	const totalFat = macros?.fat || 0;
@@ -39,7 +47,7 @@ const FoodForm = () => {
 
 	return (
 		<div>
-			{weight}
+			Current Weight: {weight}
 			<h2 className="text-center">Remaining Macros for the Day</h2>
 			<div className="flex">
 				<div className="flex w-full justify-center">

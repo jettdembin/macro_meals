@@ -19,9 +19,9 @@ export default function RootLayout({
 			<body>
 				<>
 					<Nav />
-					<FoodProvider>
-						<MacroProvider>{children}</MacroProvider>
-					</FoodProvider>
+					{/* <FoodProvider> */}
+					<MacroProvider>{children}</MacroProvider>
+					{/* </FoodProvider> */}
 				</>
 			</body>
 		</html>

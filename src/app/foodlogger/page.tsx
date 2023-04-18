@@ -18,7 +18,6 @@ const FoodLogger = () => {
 
 	return (
 		<ContentLayout title="Food logger 😋">
-			Log food
 			<FoodForm />
 			<FoodList />
 		</ContentLayout>

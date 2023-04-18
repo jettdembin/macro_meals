@@ -7,11 +7,18 @@ const MacroContext = createContext(null);
 
 const MacroProvider = ({ children }) => {
 	const {
+		foods,
+		setFoods,
 		macros,
-		goal,
+		setMacros,
+		remainingMacros,
+		setRemainingMacros,
+		addFood,
+		editFood,
+		removeFood,
+		goalOptions,
 		weight,
 		setWeight,
-		goalOptions,
 		calories,
 		handleShred,
 		handleMaintain,
@@ -23,11 +30,18 @@ const MacroProvider = ({ children }) => {
 	return (
 		<MacroContext.Provider
 			value={{
+				foods,
+				setFoods,
 				macros,
-				goal,
+				setMacros,
+				remainingMacros,
+				setRemainingMacros,
+				addFood,
+				editFood,
+				removeFood,
+				goalOptions,
 				weight,
 				setWeight,
-				goalOptions,
 				calories,
 				handleShred,
 				handleMaintain,

@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { useFoodContext } from "@/context/FoodProvider";
+import { useMacroContext } from "@/context/MacroProvider";
 import Food from "./FoodList/Food";
 
 const FoodList = () => {
-	const { foods } = useFoodContext();
+	const { foods } = useMacroContext();
 
 	// debugger;
 
@@ -36,7 +36,7 @@ const FoodList = () => {
 				{foods.map((food, i) => (
 					<Fragment key={i}>
 						<li className="grid grid-cols-3 border border-solid border-red-500 list-none">
-							<Food food={food} id={food.id} />
+							<Food food={food} id={food.id} index={i} />
 						</li>
 						{i < foods.length - 1 && <hr />}
 					</Fragment>
