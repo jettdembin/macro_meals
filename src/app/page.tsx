@@ -19,7 +19,6 @@ export default function Home() {
 		setWeight,
 		goal,
 		goalOptions,
-		macros,
 		handleGoalChange,
 		handleGoalSubmit,
 	} = useMacroContext();

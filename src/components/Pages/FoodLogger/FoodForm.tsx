@@ -9,35 +9,16 @@ import { useFoodContext } from "@/context/FoodProvider";
 import { useMacroContext } from "@/context/MacroProvider";
 
 const FoodForm = () => {
-	const [food, handleFoodChange, reset] = useFormState("");
-	const [carb, handleProteinChange, resetProtein] = useFormDigitState("");
-	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
-	const [fat, handleFatChange, resetFat] = useFormDigitState("");
+	const [food, handleFoodChange, clearFood] = useFormState("");
+	const [carbs, handleProteinChange, clearProtein] = useFormDigitState("");
+	const [protein, handleCarbChange, clearCarb] = useFormDigitState("");
+	const [fat, handleFatChange, clearFat] = useFormDigitState("");
 
-	const {
-		foods,
-		addFood,
-		removeFood,
-		allowEdit,
-		handleShred,
-		handleMaintain,
-		handleBulk,
-		weight,
-		macros,
-	} = useMacroContext();
-	const totalCarbs = macros?.carbs || 0;
-	const totalProtein = macros?.protein || 0;
-	const totalFat = macros?.fat || 0;
+	const { addFood, weight, remainingMacros } = useMacroContext();
 
-	const [remainingMacros, setRemainingMacros] = useState({
-		carb: totalCarbs,
-		protein: totalProtein,
-		fat: totalFat,
-	});
-
-	console.log(totalCarbs, "totalCarbs");
-	console.log(totalProtein, "totalProtein");
-	console.log(totalFat, "totalFat");
+	const totalCarbs = remainingMacros?.carbs || 0;
+	const totalProtein = remainingMacros?.protein || 0;
+	const totalFat = remainingMacros?.fat || 0;
 
 	// const handleMacros = (carb, protein, fat) => {
 	// 	setRemainingMacros({
@@ -70,20 +51,14 @@ const FoodForm = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					alert("submitted");
-					addFood(food, carb, protein, fat);
+					addFood({ food, carbs, protein, fat });
 
-					// props.addFood(value, carb, protein, fat);
-					// props.handleMacro(props.remaining[0]?.Carb - Number(carb), "Carb");
-					// props.handleMacro(
-					// 	props.remaining[0]?.Protein - Number(protein),
-					// 	"Protein"
-					// );
-					// props.handleMacro(props.remaining[0]?.Fat - Number(fat), "Fat");
-					// props.toggleColor(carb, protein, fat, 1);
-					// reset();
-					// resetCarb();
-					// resetProtein();
-					// resetFat();
+					clearFood();
+					clearCarb();
+					clearProtein();
+					clearFat();
+
+					console.log({ food, carbs, protein, fat });
 				}}
 			>
 				<input
@@ -96,14 +71,16 @@ const FoodForm = () => {
 					<div>
 						<input
 							className="border border-solid border-green-400"
+							value={carbs}
+							type="number"
 							label="Carbs(grams)"
-							value={carb}
 							onChange={handleProteinChange}
 						/>
 					</div>
 					<div>
 						<input
 							className="border border-solid border-purple-400"
+							type="number"
 							label="Protein(grams)"
 							onChange={handleCarbChange}
 							value={protein}
@@ -112,6 +89,7 @@ const FoodForm = () => {
 					<div>
 						<input
 							className="border border-solid border-purple-400"
+							type="number"
 							label="Fat(grams)"
 							onChange={handleFatChange}
 							value={fat}
