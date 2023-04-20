@@ -34,7 +34,7 @@ const FoodForm = () => {
 				<div className="flex w-full justify-center">
 					<div className="mx-auto my-auto">
 						<h4>Carb(C)</h4>
-						<div className="flex">
+						<div className="flex justify-center">
 							<h3 className="text-center">
 								{remainingCarbs}
 								<span>/</span>
@@ -44,7 +44,7 @@ const FoodForm = () => {
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Protein(P)</h4>
-						<div className="flex">
+						<div className="flex justify-center">
 							<h3 className="text-center">
 								{remainingProtein}
 								<span>/</span>
@@ -54,7 +54,7 @@ const FoodForm = () => {
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Fat(F)</h4>
-						<div className="flex">
+						<div className="flex justify-center">
 							<h3 className="text-center">
 								{remainingFat}
 								<span>/</span>
@@ -84,7 +84,6 @@ const FoodForm = () => {
 					className="mx-auto text-center block border-red-400"
 					value={food}
 					onChange={handleFoodChange}
-					label="Food"
 				/>
 				<div className="flex justify-between">
 					<div>
@@ -92,7 +91,6 @@ const FoodForm = () => {
 							className="border border-solid border-green-400"
 							value={carbs}
 							type="number"
-							label="Carbs(grams)"
 							onChange={handleProteinChange}
 						/>
 					</div>
@@ -100,7 +98,6 @@ const FoodForm = () => {
 						<input
 							className="border border-solid border-purple-400"
 							type="number"
-							label="Protein(grams)"
 							onChange={handleCarbChange}
 							value={protein}
 						/>
@@ -109,14 +106,16 @@ const FoodForm = () => {
 						<input
 							className="border border-solid border-purple-400"
 							type="number"
-							label="Fat(grams)"
 							onChange={handleFatChange}
 							value={fat}
 						/>
 					</div>
 				</div>
 				<div className="flex items-center justify-end">
-					<button className="Goal-btn" type="submit">
+					<button
+						className="border-none bg-cyan-200 text-slate-700 rounded-sm p-2"
+						type="submit"
+					>
 						Add Food
 					</button>
 				</div>

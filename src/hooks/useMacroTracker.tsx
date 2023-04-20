@@ -1,33 +1,20 @@
-import React, { useState } from "react";
-
-interface Food {
-	id: string;
-	name: string;
-	carbs: number;
-	protein: number;
-	fat: number;
-}
-
-interface Macros {
-	carbs: number;
-	protein: number;
-	fat: number;
-}
+import { useState } from "react";
+import { FoodInterface, MacrosInterface } from "@/types/Food";
 
 const useMacroTracker = () => {
-	const [foods, setFoods] = useState<Food[]>([]);
-	const [macros, setMacros] = useState<Macros>({
+	const [foods, setFoods] = useState<FoodInterface[]>([]);
+	const [macros, setMacros] = useState<MacrosInterface>({
 		carbs: 0,
 		protein: 0,
 		fat: 0,
 	});
-	const [remainingMacros, setRemainingMacros] = useState<Macros>({
+	const [remainingMacros, setRemainingMacros] = useState<MacrosInterface>({
 		carbs: 0,
 		protein: 0,
 		fat: 0,
 	});
 
-	const addFood = (food: Food) => {
+	const addFood = (food: FoodInterface) => {
 		setFoods([...foods, food]);
 
 		setRemainingMacros({
@@ -37,7 +24,7 @@ const useMacroTracker = () => {
 		});
 	};
 
-	const editFood = (index: number, updatedFood: Food) => {
+	const editFood = (index: number, updatedFood: FoodInterface) => {
 		setFoods(foods.map((food, i) => (i === index ? updatedFood : food)));
 
 		const oldFood = foods[index];

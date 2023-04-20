@@ -17,6 +17,7 @@ module.exports = {
 
 		// Or if using `src` directory:
 		"./src/**/*.{js,ts,jsx,tsx}",
+		"./src/app/styles/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
 		extend: {

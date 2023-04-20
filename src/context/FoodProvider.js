@@ -7,8 +7,6 @@ const FoodContext = createContext(null);
 
 const FoodProvider = ({ children }) => {
 	const { foods, addFood, removeFood, allowEdit } = useFoodState();
-	console.log(foods);
-	// debugger;
 
 	return (
 		<FoodContext.Provider value={{ foods, addFood, removeFood, allowEdit }}>

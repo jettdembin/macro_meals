@@ -30,7 +30,7 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"src/hooks/useStorage.jsx",
-		"src/hooks/useGoalCalculation.jsx"
+		"src/hooks/useGoalCalculation.js"
 	],
 	"exclude": ["node_modules"]
 }
