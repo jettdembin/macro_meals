@@ -1,8 +1,12 @@
 import React, { useState, Fragment } from "react";
+import { useFoodContext } from "@/context/FoodProvider";
+import { useMacroContext } from "@/context/MacroProvider";
 // import EditFoodForm from "./EditFoodForm";
 
-const Food = ({ food }) => {
+const Food = ({ food, index }) => {
 	const [isEditing, setIsEditing] = useState(false);
+	const { foods, addFood, removeFood, allowEdit } = useMacroContext();
+
 	const toggleEdit = () => {
 		setIsEditing(!isEditing);
 	};
@@ -29,7 +33,7 @@ const Food = ({ food }) => {
 					</div>
 
 					<div className="grid grid-cols-3 items-center w-full ">
-						<div className="text-center">{food.carb ? food.carb : "0"}</div>
+						<div className="text-center">{food.carbs ? food.carbs : "0"}</div>
 						<div className="text-center">
 							{food.protein ? food.protein : "0"}
 						</div>
@@ -40,29 +44,7 @@ const Food = ({ food }) => {
 						<button
 							className="w-12 text-center pointer"
 							onClick={() => {
-								if (remainingCarb + Number(food.carb) > storedTotals[0].Carb) {
-									handleMacro(storedTotals[0].Carb, "Carb");
-								} else {
-									handleMacro(remainingCarb + Number(food.carb), "Carb");
-								}
-								if (
-									remainingProtein + Number(food.protein) >
-									storedTotals[0].Protein
-								) {
-									handleMacro(storedTotals[0].Protein, "Protein");
-								} else {
-									handleMacro(
-										remainingProtein + Number(food.protein),
-										"Protein"
-									);
-								}
-								if (remainingFat + Number(food.fat) > storedTotals[0].Fat) {
-									handleMacro(storedTotals[0].Fat, "Fat");
-								} else {
-									handleMacro(remainingFat + Number(food.fat), "Fat");
-								}
-								removeFood(food.id);
-								toggleColor(food.carb, food.protein, food.fat, 3);
+								removeFood(index);
 							}}
 							aria-label="Delete"
 						>

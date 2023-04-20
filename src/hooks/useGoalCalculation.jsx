@@ -1,9 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import useMacroTracker from "./useMacroTracker";
 
 export const useGoalCalculation = () => {
+	const {
+		foods,
+		setFoods,
+		macros,
+		setMacros,
+		remainingMacros,
+		setRemainingMacros,
+		addFood,
+		editFood,
+		removeFood,
+	} = useMacroTracker();
+
 	const initialMacros = {
 		carbs: 0, // grams
 		protein: 0, // grams
@@ -17,7 +30,7 @@ export const useGoalCalculation = () => {
 		{ val: 18, text: "Bulk" },
 	];
 
-	const [macros, setMacros] = useState(initialMacros);
+	// const [macros, setMacros] = useState(initialMacros);
 	const [weight, setWeight] = useState(0);
 	const [goal, setGoal] = useState(0);
 
@@ -36,9 +49,19 @@ export const useGoalCalculation = () => {
 			protein: Math.round((calories * 0.4) / 4),
 			fat: Math.round((calories * 0.2) / 9),
 		});
+		setRemainingMacros({
+			carbs: Math.round((calories * 0.4) / 4),
+			protein: Math.round((calories * 0.4) / 4),
+			fat: Math.round((calories * 0.2) / 9),
+		});
 	};
 	const handleMaintain = () => {
 		setMacros({
+			carbs: Math.round((calories * 0.5) / 4),
+			protein: Math.round((calories * 0.3) / 4),
+			fat: Math.round((calories * 0.2) / 9),
+		});
+		setRemainingMacros({
 			carbs: Math.round((calories * 0.5) / 4),
 			protein: Math.round((calories * 0.3) / 4),
 			fat: Math.round((calories * 0.2) / 9),
@@ -48,6 +71,11 @@ export const useGoalCalculation = () => {
 		const minimumProteinInCals = weight * 0.8 * 4;
 		const remainingCalsMinusProtein = calories - minimumProteinInCals;
 		setMacros({
+			carbs: Math.round((remainingCalsMinusProtein * 0.6) / 4),
+			protein: Math.round(weight * 0.8),
+			fat: Math.round((remainingCalsMinusProtein * 0.4) / 9),
+		});
+		setRemainingMacros({
 			carbs: Math.round((remainingCalsMinusProtein * 0.6) / 4),
 			protein: Math.round(weight * 0.8),
 			fat: Math.round((remainingCalsMinusProtein * 0.4) / 9),
@@ -78,7 +106,15 @@ export const useGoalCalculation = () => {
 	};
 
 	return {
+		foods,
+		setFoods,
 		macros,
+		setMacros,
+		remainingMacros,
+		setRemainingMacros,
+		addFood,
+		editFood,
+		removeFood,
 		goalOptions,
 		weight,
 		setWeight,

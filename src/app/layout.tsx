@@ -1,7 +1,8 @@
-import "./output.css";
-
 import FoodProvider from "../context/FoodProvider";
 import MacroProvider from "../context/MacroProvider";
+import Nav from "../components/Layout/Nav";
+
+import "./styles/globals.css";
 
 export default function RootLayout({
 	children,
@@ -16,9 +17,12 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<FoodProvider>
+				<>
+					<Nav />
+					{/* <FoodProvider> */}
 					<MacroProvider>{children}</MacroProvider>
-				</FoodProvider>
+					{/* </FoodProvider> */}
+				</>
 			</body>
 		</html>
 	);

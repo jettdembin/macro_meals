@@ -9,27 +9,16 @@ import { useFoodContext } from "@/context/FoodProvider";
 import { useMacroContext } from "@/context/MacroProvider";
 
 const FoodForm = () => {
-	const [food, handleFoodChange, reset] = useFormState("");
-	const [carb, handleProteinChange, resetProtein] = useFormDigitState("");
-	const [protein, handleCarbChange, resetCarb] = useFormDigitState("");
-	const [fat, handleFatChange, resetFat] = useFormDigitState("");
+	const [food, handleFoodChange, clearFood] = useFormState("");
+	const [carbs, handleProteinChange, clearProtein] = useFormDigitState("");
+	const [protein, handleCarbChange, clearCarb] = useFormDigitState("");
+	const [fat, handleFatChange, clearFat] = useFormDigitState("");
 
-	const { foods, addFood, removeFood, allowEdit } = useFoodContext();
-	const { handleShred, handleMaintain, handleBulk, weight, macros } =
-		useMacroContext();
-	const totalCarbs = macros?.carbs || 0;
-	const totalProtein = macros?.protein || 0;
-	const totalFat = macros?.fat || 0;
+	const { addFood, weight, remainingMacros, macros } = useMacroContext();
 
-	const [remainingMacros, setRemainingMacros] = useState({
-		carb: totalCarbs,
-		protein: totalProtein,
-		fat: totalFat,
-	});
-
-	console.log(totalCarbs, "totalCarbs");
-	console.log(totalProtein, "totalProtein");
-	console.log(totalFat, "totalFat");
+	const remainingCarbs = remainingMacros?.carbs || 0;
+	const remainingProtein = remainingMacros?.protein || 0;
+	const remainingFat = remainingMacros?.fat || 0;
 
 	// const handleMacros = (carb, protein, fat) => {
 	// 	setRemainingMacros({
@@ -39,21 +28,39 @@ const FoodForm = () => {
 
 	return (
 		<div>
-			{weight}
+			Current Weight: {weight}
 			<h2 className="text-center">Remaining Macros for the Day</h2>
 			<div className="flex">
 				<div className="flex w-full justify-center">
 					<div className="mx-auto my-auto">
 						<h4>Carb(C)</h4>
-						<h3 className="text-center">{totalCarbs}</h3>
+						<div className="flex justify-center">
+							<h3 className="text-center">
+								{remainingCarbs}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.carbs}</h3>
+						</div>
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Protein(P)</h4>
-						<h3 className="text-center">{totalProtein}</h3>
+						<div className="flex justify-center">
+							<h3 className="text-center">
+								{remainingProtein}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.protein}</h3>
+						</div>
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Fat(F)</h4>
-						<h3 className="text-center">{totalFat}</h3>
+						<div className="flex justify-center">
+							<h3 className="text-center">
+								{remainingFat}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.fat}</h3>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,41 +69,35 @@ const FoodForm = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					alert("submitted");
-					addFood(food, carb, protein, fat);
 
-					// props.addFood(value, carb, protein, fat);
-					// props.handleMacro(props.remaining[0]?.Carb - Number(carb), "Carb");
-					// props.handleMacro(
-					// 	props.remaining[0]?.Protein - Number(protein),
-					// 	"Protein"
-					// );
-					// props.handleMacro(props.remaining[0]?.Fat - Number(fat), "Fat");
-					// props.toggleColor(carb, protein, fat, 1);
-					// reset();
-					// resetCarb();
-					// resetProtein();
-					// resetFat();
+					addFood({ food, carbs: +carbs, protein: +protein, fat: +fat });
+
+					clearFood();
+					clearCarb();
+					clearProtein();
+					clearFat();
+
+					console.log({ food, carbs, protein, fat });
 				}}
 			>
 				<input
 					className="mx-auto text-center block border-red-400"
 					value={food}
 					onChange={handleFoodChange}
-					label="Food"
 				/>
 				<div className="flex justify-between">
 					<div>
 						<input
 							className="border border-solid border-green-400"
-							label="Carbs(grams)"
-							value={carb}
+							value={carbs}
+							type="number"
 							onChange={handleProteinChange}
 						/>
 					</div>
 					<div>
 						<input
 							className="border border-solid border-purple-400"
-							label="Protein(grams)"
+							type="number"
 							onChange={handleCarbChange}
 							value={protein}
 						/>
@@ -104,14 +105,17 @@ const FoodForm = () => {
 					<div>
 						<input
 							className="border border-solid border-purple-400"
-							label="Fat(grams)"
+							type="number"
 							onChange={handleFatChange}
 							value={fat}
 						/>
 					</div>
 				</div>
 				<div className="flex items-center justify-end">
-					<button className="Goal-btn" type="submit">
+					<button
+						className="border-none bg-cyan-200 text-slate-700 rounded-sm p-2"
+						type="submit"
+					>
 						Add Food
 					</button>
 				</div>

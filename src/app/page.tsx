@@ -1,15 +1,9 @@
 "use client";
 
-import { useContext, useEffect, useReducer, useState } from "react";
-import { useRouter } from "next/navigation";
-import Navbar from "@/components/Layout/Navbar";
-
 import { Button } from "@/components/Elements/Button/Button";
 
 import { ContentLayout } from "@/components/Layout/ContentLayout";
 import { useMacroContext } from "@/context/MacroProvider";
-
-import "./output.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +13,13 @@ export default function Home() {
 		setWeight,
 		goal,
 		goalOptions,
-		macros,
 		handleGoalChange,
 		handleGoalSubmit,
 	} = useMacroContext();
 
 	return (
 		<>
-			<Navbar />
+			{/* <Navbar /> */}
 			<ContentLayout title="Macro Meals">
 				<h1 className="">Enter your weight and goal to get started 💪</h1>
 				<form

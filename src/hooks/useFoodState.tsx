@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 import useLocalStorage from "./useLocalStorage";
 import useStorage from "./useStorage";
 import useLocalStorageNext from "./useLocalStorageNext";
-import { useState } from "react";
 
 const useFoodState = (initialFoods = []) => {
 	const [foods, setFoods] = useLocalStorageNext("foods", [
