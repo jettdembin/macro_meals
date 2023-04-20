@@ -50,6 +50,7 @@ const useMacroTracker = () => {
 
 	const removeFood = (index: number) => {
 		const removedFood = foods[index];
+
 		setFoods(foods.filter((_, i) => i !== index));
 
 		setRemainingMacros({

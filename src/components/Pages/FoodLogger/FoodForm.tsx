@@ -14,11 +14,11 @@ const FoodForm = () => {
 	const [protein, handleCarbChange, clearCarb] = useFormDigitState("");
 	const [fat, handleFatChange, clearFat] = useFormDigitState("");
 
-	const { addFood, weight, remainingMacros } = useMacroContext();
+	const { addFood, weight, remainingMacros, macros } = useMacroContext();
 
-	const totalCarbs = remainingMacros?.carbs || 0;
-	const totalProtein = remainingMacros?.protein || 0;
-	const totalFat = remainingMacros?.fat || 0;
+	const remainingCarbs = remainingMacros?.carbs || 0;
+	const remainingProtein = remainingMacros?.protein || 0;
+	const remainingFat = remainingMacros?.fat || 0;
 
 	// const handleMacros = (carb, protein, fat) => {
 	// 	setRemainingMacros({
@@ -34,15 +34,33 @@ const FoodForm = () => {
 				<div className="flex w-full justify-center">
 					<div className="mx-auto my-auto">
 						<h4>Carb(C)</h4>
-						<h3 className="text-center">{totalCarbs}</h3>
+						<div className="flex">
+							<h3 className="text-center">
+								{remainingCarbs}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.carbs}</h3>
+						</div>
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Protein(P)</h4>
-						<h3 className="text-center">{totalProtein}</h3>
+						<div className="flex">
+							<h3 className="text-center">
+								{remainingProtein}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.protein}</h3>
+						</div>
 					</div>
 					<div className="mx-auto my-auto">
 						<h4>Fat(F)</h4>
-						<h3 className="text-center">{totalFat}</h3>
+						<div className="flex">
+							<h3 className="text-center">
+								{remainingFat}
+								<span>/</span>
+							</h3>
+							<h3 className="text-center text-slate-400">{macros?.fat}</h3>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -51,7 +69,8 @@ const FoodForm = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					alert("submitted");
-					addFood({ food, carbs, protein, fat });
+
+					addFood({ food, carbs: +carbs, protein: +protein, fat: +fat });
 
 					clearFood();
 					clearCarb();

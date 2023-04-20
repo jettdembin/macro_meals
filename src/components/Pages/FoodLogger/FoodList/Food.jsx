@@ -33,7 +33,7 @@ const Food = ({ food, index }) => {
 					</div>
 
 					<div className="grid grid-cols-3 items-center w-full ">
-						<div className="text-center">{food.carb ? food.carb : "0"}</div>
+						<div className="text-center">{food.carbs ? food.carbs : "0"}</div>
 						<div className="text-center">
 							{food.protein ? food.protein : "0"}
 						</div>
