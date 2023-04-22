@@ -1,35 +1,25 @@
-import React, { useState, Fragment } from "react";
-import { useFoodContext } from "@/context/FoodProvider";
+import React, { useState } from "react";
+
 import { useMacroContext } from "@/context/MacroProvider";
-// import EditFoodForm from "./EditFoodForm";
+import EditFoodForm from "./EditFoodForm";
 
 const Food = ({ food, index }) => {
-	const [isEditing, setIsEditing] = useState(false);
-	const { foods, addFood, removeFood, allowEdit } = useMacroContext();
+	const [isEditing, setIsEditing] = useState(true);
+
+	const { removeFood } = useMacroContext();
 
 	const toggleEdit = () => {
 		setIsEditing(!isEditing);
 	};
-	// let remainingCarb = remaining[0].Carb;
-	// let remainingProtein = remaining[0].Protein;
-	// let remainingFat = remaining[0].Fat;
 
 	return (
-		<Fragment>
+		<>
 			{isEditing ? (
-				<>
-					{/* <EditFoodForm
-						{...props}
-						allowEdit={allowEdit}
-						id={food.id}
-						item={food.item}
-						toggleEdit={toggleEdit}
-					/> */}
-				</>
+				<EditFoodForm food={food} index={index} />
 			) : (
 				<>
 					<div>
-						<p>{food.item}</p>
+						<p className="">{food.food}</p>
 					</div>
 
 					<div className="grid grid-cols-3 items-center w-full ">
@@ -42,7 +32,7 @@ const Food = ({ food, index }) => {
 
 					<div className="w-full flex justify-end">
 						<button
-							className="w-12 text-center pointer"
+							className="w-12 cursor-pointer bg-transparent border-none"
 							onClick={() => {
 								removeFood(index);
 							}}
@@ -52,7 +42,7 @@ const Food = ({ food, index }) => {
 						</button>
 
 						<button
-							className="w-10 text-center"
+							className="w-10 cursor-pointer bg-transparent border-none"
 							onClick={toggleEdit}
 							aria-label="Edit"
 						>
@@ -61,7 +51,7 @@ const Food = ({ food, index }) => {
 					</div>
 				</>
 			)}
-		</Fragment>
+		</>
 	);
 };
 export default Food;

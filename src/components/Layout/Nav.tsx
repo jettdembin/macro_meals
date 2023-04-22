@@ -9,7 +9,7 @@ export default async function Nav() {
 	const session = await getServerSession(authOptions);
 
 	return (
-		<nav className="flex justify-between items-center">
+		<nav className="flex justify-between items-center px-4 md:px-8">
 			<Link href={"/"}>
 				<h1 className="font-bold text-lg">Macro.</h1>
 			</Link>
